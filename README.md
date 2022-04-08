@@ -7,4 +7,4 @@ wahoo
 
 for the input just put the soundtrack url
 ex: https://downloads.khinsider.com/game-soundtracks/album/katana-zero-original-soundtrack
-![example](url "https://github.com/eckshton/khinsiderscraper/blob/main/mp3ex.png?raw=true")
+![example](url "https://raw.githubusercontent.com/eckshton/khinsiderscraper/main/mp3ex.png")
