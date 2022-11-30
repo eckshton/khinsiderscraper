@@ -1,4 +1,3 @@
-from pickle import FALSE, TRUE
 import requests
 import os
 
@@ -27,12 +26,12 @@ for x in hrefs:
 uniqueurls = []
 
 for x in condensedhrefs:
-    alreadythere = FALSE
+    alreadythere = False
     for y in uniqueurls:
         if x == y:
-            alreadythere = TRUE
+            alreadythere = True
             break
-    if alreadythere == FALSE:
+    if alreadythere == False:
         uniqueurls.append(x)
         songnames.append(hrefs[condensedhrefs.index(x)].split('">')[1])
 
@@ -56,11 +55,19 @@ if type=='mp3':
         start = text2.find('href="https://vgmsite.com/soundtracks/' + sub[5] + '/')
         end = text2.find('">',start)
         finalurls.append(text2[start+6:end])
+try:
+    os.mkdir("./" + sub[5])
+except:
+    print('filling premade dir')
+    
 
-if os.path.isfile(sub[5]) == FALSE:
-    os.mkdir(sub[5])
+
 
 for x in finalurls:
+    if(os.path.isfile(sub[5]+"/"+songnames[finalurls.index(x)]+"."+type)):
+        print(songnames[finalurls.index(x)] + " already exists")
+        continue
+
     print("getting " + songnames[finalurls.index(x)])
     s = requests.get(x)
     file = open(sub[5]+"/"+songnames[finalurls.index(x)]+"."+type,"wb")
